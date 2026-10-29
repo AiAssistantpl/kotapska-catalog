@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>KOTAPSKA - Stock collection</title>
+<meta name="description" content="KOTAPSKA Bridal Couture - stock gowns for bridal salons. Choose models and request prices.">
+<style>
+@font-face{font-family:Man;src:url(fonts/Manrope.ttf);font-weight:200 800;font-display:swap}
+@font-face{font-family:Lor;src:url(fonts/Lora-Italic-Variable.ttf);font-style:italic;font-display:swap}
+:root{--bg:#fff;--ink:#4f5151;--mut:#7a7c7c;--line:#e1e1e1;--soft:#f6f5f3;--acc:#b5b1ac;--btn:#4f5151;--btnt:#fff;--ok:#5b7a5f;--err:#a14a4a}
+@media (prefers-color-scheme:dark){:root{--bg:#161616;--ink:#e6e4e1;--mut:#a3a19d;--line:#2f2f2f;--soft:#1f1f1f;--acc:#8f8b86;--btn:#e6e4e1;--btnt:#161616}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Man,Arial,sans-serif;font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+.it{font-family:Lor,Georgia,serif;font-style:italic;font-weight:400}
+a{color:inherit}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:20}
+.logo{height:34px;display:block}
+@media (prefers-color-scheme:dark){.logo{filter:invert(1) brightness(1.6)}}
+.langs{display:flex;gap:2px}
+.langs button{background:none;border:0;color:var(--mut);font:600 12px Man,sans-serif;letter-spacing:.12em;padding:10px 9px;min-height:44px;cursor:pointer;border-radius:6px}
+.langs button[aria-pressed=true]{color:var(--ink);background:var(--soft)}
+.hero{max-width:1180px;margin:0 auto;padding:44px 20px 18px}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--acc);margin:0 0 10px}
+h1{font-family:Lor,Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(32px,6vw,52px);line-height:1.1;margin:0 0 14px;color:var(--mut)}
+.lead{max-width:640px;color:var(--mut);margin:0}
+.tools{max-width:1180px;margin:0 auto;padding:12px 20px 8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.chip{border:1px solid var(--line);background:none;color:var(--ink);padding:0 16px;min-height:44px;border-radius:22px;font:500 14px Man,sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--btn);color:var(--btnt);border-color:var(--btn)}
+.search{border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px;border-radius:22px;padding:0 16px;font:16px Man,sans-serif;width:150px}
+main{max-width:1180px;margin:0 auto;padding:8px 20px 140px}
+.count{font-size:13px;color:var(--mut);margin:8px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px 18px}
+.card{display:flex;flex-direction:column;min-width:0}
+.ph{position:relative;display:block;width:100%;aspect-ratio:2/3;background:var(--soft);border:0;padding:0;cursor:pointer;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+@media (hover:hover){.ph:hover img{transform:scale(1.03)}}
+.tag{position:absolute;left:10px;top:10px;background:rgba(255,255,255,.92);color:#4f5151;font-size:11px;letter-spacing:.06em;padding:3px 9px;border-radius:12px}
+.meta{padding:10px 2px 0}
+.num{font-family:Lor,Georgia,serif;font-style:italic;font-size:22px;color:var(--mut);line-height:1.2}
+.sub{font-size:12px;color:var(--mut);letter-spacing:.02em;margin:2px 0 10px}
+.add{width:100%;min-height:46px;border-radius:23px;border:1px solid var(--btn);background:none;color:var(--ink);font:600 13px Man,sans-serif;letter-spacing:.06em;cursor:pointer}
+.add[aria-pressed=true]{background:var(--btn);color:var(--btnt)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:none;z-index:30;box-shadow:0 -6px 24px rgba(0,0,0,.06)}
+.bar.on{display:block}
+.bar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.bar b{font-weight:700}
+.btn{min-height:48px;padding:0 26px;border-radius:24px;border:0;background:var(--btn);color:var(--btnt);font:700 14px Man,sans-serif;letter-spacing:.06em;cursor:pointer}
+.btn:disabled{opacity:.55;cursor:default}
+.ghost{background:none;border:1px solid var(--line);color:var(--ink)}
+.ov{position:fixed;inset:0;background:rgba(20,20,20,.55);display:none;z-index:50;align-items:flex-start;justify-content:center;overflow:auto;padding:0}
+.ov.on{display:flex}
+.sheet{background:var(--bg);width:100%;max-width:980px;min-height:100%;position:relative;padding:26px 22px 40px}
+@media (min-width:900px){.sheet{margin:30px 0;min-height:0;border-radius:6px}}
+.x{position:absolute;right:10px;top:10px;width:48px;height:48px;border:0;background:none;color:var(--ink);font-size:30px;cursor:pointer;line-height:1}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 18px}
+.gal img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--soft)}
+@media (max-width:640px){.gal{grid-template-columns:1fr 1fr}.gal img:first-child{grid-column:1/3;aspect-ratio:3/4}}
+.dh{font-family:Lor,Georgia,serif;font-style:italic;font-size:34px;color:var(--mut);margin:0 0 2px}
+.dl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+.row{margin:0 0 14px}
+.row h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;font-weight:600}
+.sz{display:flex;flex-wrap:wrap;gap:8px}
+.sz button{min-width:48px;min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--line);background:none;color:var(--ink);font:600 14px Man,sans-serif;cursor:pointer}
+.sz button[aria-pressed=true]{background:var(--btn);color:var(--btnt);border-color:var(--btn)}
+.list{list-style:none;margin:0 0 18px;padding:0}
+.li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.li img{width:46px;height:69px;object-fit:cover;background:var(--soft)}
+.li .t{flex:1;min-width:0}
+.li .t b{font-family:Lor,Georgia,serif;font-style:italic;font-weight:400;font-size:20px;color:var(--mut)}
+.li .t small{display:block;color:var(--mut);font-size:12px}
+.rm{border:0;background:none;color:var(--mut);font-size:13px;cursor:pointer;min-height:44px;padding:0 6px;text-decoration:underline}
+form{display:grid;gap:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+label{font-size:13px;color:var(--mut);display:block;margin-bottom:4px}
+input[type=text],input[type=email],input[type=tel],textarea{width:100%;min-height:48px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:16px Man,sans-serif;padding:10px 14px}
+textarea{min-height:84px;resize:vertical}
+input:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--mut)}
+.chk input{margin-top:3px;width:20px;height:20px;flex:none}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.msg{font-size:14px;min-height:20px}.msg.err{color:var(--err)}
+.done{display:none;text-align:center;padding:40px 10px}
+.done h3{font-family:Lor,Georgia,serif;font-style:italic;font-weight:400;font-size:34px;color:var(--mut);margin:0 0 8px}
+footer{border-top:1px solid var(--line);padding:26px 20px 150px;text-align:center;font-size:12px;color:var(--mut);letter-spacing:.04em}
+footer a{text-decoration:underline}
+.note{font-size:12px;color:var(--mut);margin:0 0 12px}
+</style>
+</head>
+<body>
+<header>
+  <img class="logo" src="logotype_lockup.png" alt="KOTAPSKA Bridal Couture" width="82" height="34">
+  <div class="langs" id="langs" role="group" aria-label="Language">
+    <button data-l="en">EN</button><button data-l="fr">FR</button><button data-l="de">DE</button><button data-l="uk">UK</button>
+  </div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow" id="t_eyebrow"></p>
+  <h1 id="t_h1"></h1>
+  <p class="lead" id="t_lead"></p>
+</section>
+
+<div class="tools">
+  <div class="chips" id="chips" role="group"></div>
+  <input class="search" id="q" type="search" inputmode="numeric" autocomplete="off">
+</div>
+
+<main>
+  <div class="count" id="count" aria-live="polite"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  <div id="t_foot"></div>
+  <div style="margin-top:6px"><a href="mailto:office@kotapska.com">office@kotapska.com</a></div>
+</footer>
+
+<div class="bar" id="bar"><div class="bar-in">
+  <div id="barTxt"></div>
+  <button class="btn" id="barBtn"></button>
+</div></div>
+
+<div class="ov" id="ovM" role="dialog" aria-modal="true" aria-labelledby="mNum"><div class="sheet">
+  <button class="x" data-close aria-label="Close">&times;</button>
+  <div class="gal" id="mGal"></div>
+  <h2 class="dh" id="mNum"></h2>
+  <p class="dl" id="mColl"></p>
+  <div class="row"><h4 id="t_sizes"></h4><div class="sz" id="mSz"></div><p class="note" id="mSzNote"></p></div>
+  <div class="row"><h4 id="t_colour"></h4><div id="mCol"></div></div>
+  <div class="row"><h4 id="t_stock"></h4><div id="mStock"></div></div>
+  <button class="btn" id="mAdd" style="width:100%"></button>
+</div></div>
+
+<div class="ov" id="ovR" role="dialog" aria-modal="true" aria-labelledby="rH"><div class="sheet">
+  <button class="x" data-close aria-label="Close">&times;</button>
+  <div id="rBody">
+    <h2 class="dh" id="rH"></h2>
+    <p class="note" id="rLead"></p>
+    <ul class="list" id="rList"></ul>
+    <form id="rForm" novalidate>
+      <div class="hp"><label>Website</label><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="two">
+        <div><label for="f_salon" id="l_salon"></label><input id="f_salon" name="salon" type="text" autocomplete="organization" required></div>
+        <div><label for="f_name" id="l_name"></label><input id="f_name" name="name" type="text" autocomplete="name" required></div>
+      </div>
+      <div class="two">
+        <div><label for="f_country" id="l_country"></label><input id="f_country" name="country" type="text" autocomplete="country-name" required></div>
+        <div><label for="f_email" id="l_email"></label><input id="f_email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div><label for="f_phone" id="l_phone"></label><input id="f_phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div><label for="f_note" id="l_note"></label><textarea id="f_note" name="note"></textarea></div>
+      <label class="chk"><input type="checkbox" id="f_consent" required><span id="l_consent"></span></label>
+      <div class="msg" id="rMsg" role="alert"></div>
+      <button class="btn" id="rSend" type="submit"></button>
+    </form>
+  </div>
+  <div class="done" id="rDone"><h3 id="dOk"></h3><p id="dOk2" class="note"></p><button class="btn ghost" id="dClose" data-close></button></div>
+</div></div>
+
+<script>
+var ENDPOINT="https://api.smartai-crm.com/webhook/kotapska-stock-request";
+var PDF_URL="";
+var DATA={"2701": {"c": "Roman Holiday 2027", "s": ["38", "40", "42"], "col": ["Original"], "u": 2, "p": ["img/2701_0.jpg", "img/2701_1.jpg", "img/2701_2.jpg"]}, "2702": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2702_0.jpg", "img/2702_1.jpg", "img/2702_2.jpg"]}, "2704": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2704_0.jpg", "img/2704_1.jpg", "img/2704_2.jpg"]}, "2705": {"c": "Roman Holiday 2027", "s": ["38", "40"], "col": ["Original"], "u": 2, "p": ["img/2705_0.jpg", "img/2705_1.jpg", "img/2705_2.jpg"]}, "2706": {"c": "Roman Holiday 2027", "s": ["42", "32–44"], "col": ["Powder", "Original", "Ivory"], "u": 2, "p": ["img/2706_0.jpg", "img/2706_1.jpg", "img/2706_2.jpg"]}, "2709": {"c": "Roman Holiday 2027", "s": ["38", "42"], "col": ["Original"], "u": 2, "p": ["img/2709_0.jpg", "img/2709_1.jpg", "img/2709_2.jpg"]}, "2710": {"c": "Roman Holiday 2027", "s": ["38", "40", "42"], "col": ["Original"], "u": 1, "p": ["img/2710_0.jpg", "img/2710_1.jpg", "img/2710_2.jpg"]}, "2711": {"c": "Roman Holiday 2027", "s": ["40"], "col": ["Original"], "u": 1, "p": ["img/2711_0.jpg", "img/2711_1.jpg", "img/2711_2.jpg"]}, "2712": {"c": "Roman Holiday 2027", "s": ["40", "42", "44"], "col": ["Original"], "u": 1, "p": ["img/2712_0.jpg", "img/2712_1.jpg", "img/2712_2.jpg"]}, "2716": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2716_0.jpg", "img/2716_1.jpg", "img/2716_2.jpg"]}, "2717": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2717_0.jpg", "img/2717_1.jpg", "img/2717_2.jpg"]}, "2718": {"c": "Roman Holiday 2027", "s": ["38", "42"], "col": ["Original"], "u": 2, "p": ["img/2718_0.jpg", "img/2718_1.jpg", "img/2718_2.jpg"]}, "2719": {"c": "Roman Holiday 2027", "s": ["38", "40"], "col": ["Original"], "u": 1, "p": ["img/2719_0.jpg", "img/2719_1.jpg", "img/2719_2.jpg"]}, "2721": {"c": "Roman Holiday 2027", "s": ["38", "40"], "col": ["Original", "Ivory"], "u": 2, "p": ["img/2721_0.jpg", "img/2721_1.jpg", "img/2721_2.jpg"]}, "2722": {"c": "Roman Holiday 2027", "s": ["38", "44"], "col": ["Original"], "u": 3, "p": ["img/2722_0.jpg", "img/2722_1.jpg", "img/2722_2.jpg"]}, "2723": {"c": "Roman Holiday 2027", "s": ["38", "40", "42", "44"], "col": ["Original", "Custom colour"], "u": 3, "p": ["img/2723_0.jpg", "img/2723_1.jpg", "img/2723_2.jpg"]}, "2728": {"c": "Roman Holiday 2027", "s": ["40"], "col": ["Original"], "u": 1, "p": ["img/2728_0.jpg", "img/2728_1.jpg", "img/2728_2.jpg"]}, "2731": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2731_0.jpg", "img/2731_1.jpg", "img/2731_2.jpg"]}, "2732": {"c": "Roman Holiday 2027", "s": ["40"], "col": ["Original"], "u": 1, "p": ["img/2732_0.jpg", "img/2732_1.jpg", "img/2732_2.jpg"]}, "2734": {"c": "Roman Holiday 2027", "s": ["38", "40", "42"], "col": ["Original"], "u": 4, "p": ["img/2734_0.jpg", "img/2734_1.jpg", "img/2734_2.jpg"]}, "2739": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2739_0.jpg", "img/2739_1.jpg", "img/2739_2.jpg"]}, "2743": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2743_0.jpg", "img/2743_1.jpg", "img/2743_2.jpg"]}, "2744": {"c": "Roman Holiday 2027", "s": ["38", "42"], "col": ["Original"], "u": 1, "p": ["img/2744_0.jpg", "img/2744_1.jpg", "img/2744_2.jpg"]}, "2747": {"c": "Roman Holiday 2027", "s": ["40"], "col": ["Original"], "u": 1, "p": ["img/2747_0.jpg", "img/2747_1.jpg", "img/2747_2.jpg"]}, "2748": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2748_0.jpg", "img/2748_1.jpg", "img/2748_2.jpg"]}, "2750": {"c": "Roman Holiday 2027", "s": ["36"], "col": ["Original"], "u": 1, "p": ["img/2750_0.jpg", "img/2750_1.jpg", "img/2750_2.jpg"]}, "2752": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2752_0.jpg", "img/2752_1.jpg", "img/2752_2.jpg"]}, "2753": {"c": "Roman Holiday 2027", "s": ["38", "40", "42"], "col": ["Original"], "u": 1, "p": ["img/2753_0.jpg", "img/2753_1.jpg", "img/2753_2.jpg"]}, "2755": {"c": "Roman Holiday 2027", "s": ["40"], "col": ["Original", "Ivory"], "u": 2, "p": ["img/2755_0.jpg", "img/2755_1.jpg", "img/2755_2.jpg"]}, "2756": {"c": "Roman Holiday 2027", "s": ["40", "42"], "col": ["Original", "Ivory"], "u": 3, "p": ["img/2756_0.jpg", "img/2756_1.jpg", "img/2756_2.jpg"]}, "2757": {"c": "Roman Holiday 2027", "s": ["36", "38", "40", "42"], "col": ["Original"], "u": 4, "p": ["img/2757_0.jpg", "img/2757_1.jpg", "img/2757_2.jpg"]}, "2759": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2759_0.jpg", "img/2759_1.jpg", "img/2759_2.jpg"]}, "2760": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2760_0.jpg", "img/2760_1.jpg", "img/2760_2.jpg"]}, "2761": {"c": "Roman Holiday 2027", "s": ["38", "42"], "col": ["Original", "Ivory"], "u": 2, "p": ["img/2761_0.jpg", "img/2761_1.jpg", "img/2761_2.jpg"]}, "2762": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Powder", "Original", "Ivory"], "u": 2, "p": ["img/2762_0.jpg", "img/2762_1.jpg", "img/2762_2.jpg"]}, "2763": {"c": "Roman Holiday 2027", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2763_0.jpg", "img/2763_1.jpg", "img/2763_2.jpg"]}, "2766": {"c": "Roman Holiday 2027", "s": ["38", "42"], "col": ["Original", "Custom colour"], "u": 2, "p": ["img/2766_0.jpg", "img/2766_1.jpg", "img/2766_2.jpg"]}, "2767": {"c": "Roman Holiday 2027", "s": ["36", "40", "42", "44"], "col": ["Original", "Ivory"], "u": 4, "p": ["img/2767_0.jpg", "img/2767_1.jpg", "img/2767_2.jpg"]}, "2620": {"c": "For You 2026", "s": ["40"], "col": ["Original"], "u": 2, "p": ["img/2620_0.jpg", "img/2620_1.jpg", "img/2620_2.jpg"]}, "2720": {"c": "Roman Holiday 2027", "s": ["42", "44"], "col": ["Original"], "u": 1, "p": ["img/2720_0.jpg", "img/2720_1.jpg", "img/2720_2.jpg"]}, "2713": {"c": "Roman Holiday 2027", "s": ["38", "42"], "col": ["Original"], "u": 2, "p": ["img/2713_0.jpg", "img/2713_1.jpg", "img/2713_2.jpg"]}, "2741": {"c": "Roman Holiday 2027", "s": ["42", "44"], "col": ["Original"], "u": 3, "p": ["img/2741_0.jpg", "img/2741_1.jpg", "img/2741_2.jpg"]}, "2733": {"c": "Roman Holiday 2027", "s": ["38", "44"], "col": ["Original"], "u": 2, "p": ["img/2733_0.jpg", "img/2733_1.jpg", "img/2733_2.jpg"]}, "2727": {"c": "Roman Holiday 2027", "s": ["36", "42"], "col": ["Original"], "u": 2, "p": ["img/2727_0.jpg", "img/2727_1.jpg", "img/2727_2.jpg"]}, "2414": {"c": "Earlier collections", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2414_0.jpg", "img/2414_1.jpg"]}, "2737": {"c": "Roman Holiday 2027", "s": ["40", "42", "44", "46"], "col": ["Original"], "u": 5, "p": ["img/2737_0.jpg", "img/2737_1.jpg", "img/2737_2.jpg"]}, "2765": {"c": "Roman Holiday 2027", "s": ["42"], "col": ["Original"], "u": 1, "p": ["img/2765_0.jpg", "img/2765_1.jpg"]}, "2714": {"c": "Roman Holiday 2027", "s": ["40", "42", "44"], "col": ["Original", "Custom colour"], "u": 4, "p": ["img/2714_0.jpg", "img/2714_1.jpg", "img/2714_2.jpg"]}, "2405": {"c": "Earlier collections", "s": ["36"], "col": ["Original"], "u": 1, "p": ["img/2405_0.jpg", "img/2405_1.jpg", "img/2405_2.jpg"]}, "2423": {"c": "Earlier collections", "s": ["44"], "col": ["Original"], "u": 1, "p": ["img/2423_0.jpg", "img/2423_1.jpg"]}, "2401": {"c": "Earlier collections", "s": ["44"], "col": ["Original"], "u": 1, "p": ["img/2401_0.jpg", "img/2401_1.jpg", "img/2401_2.jpg"]}, "2611": {"c": "For You 2026", "s": ["50"], "col": ["Original"], "u": 1, "p": ["img/2611_0.jpg", "img/2611_1.jpg", "img/2611_2.jpg"]}, "2507": {"c": "Love Actually 2025", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2507_0.jpg", "img/2507_1.jpg", "img/2507_2.jpg"]}, "2412": {"c": "Earlier collections", "s": ["40", "42"], "col": ["Original", "Custom colour"], "u": 2, "p": ["img/2412_0.jpg", "img/2412_1.jpg", "img/2412_2.jpg"]}, "2634": {"c": "For You 2026", "s": ["38"], "col": ["Original"], "u": 1, "p": ["img/2634_0.jpg", "img/2634_1.jpg", "img/2634_2.jpg"]}, "2742": {"c": "Roman Holiday 2027", "s": ["38", "42"], "col": ["Original", "Custom colour"], "u": 2, "p": ["img/2742_0.jpg", "img/2742_1.jpg", "img/2742_2.jpg"]}, "2754": {"c": "Roman Holiday 2027", "s": ["44"], "col": ["Original"], "u": 1, "p": ["img/2754_0.jpg", "img/2754_1.jpg", "img/2754_2.jpg"]}, "2725": {"c": "Roman Holiday 2027", "s": ["42", "44"], "col": ["Original", "Custom colour"], "u": 2, "p": ["img/2725_0.jpg", "img/2725_1.jpg", "img/2725_2.jpg"]}, "2715": {"c": "Roman Holiday 2027", "s": ["44"], "col": ["Ivory", "Original", "Custom colour"], "u": 3, "p": ["img/2715_0.jpg", "img/2715_1.jpg", "img/2715_2.jpg"]}, "2603": {"c": "For You 2026", "s": ["40"], "col": ["Custom colour"], "u": 1, "p": ["img/2603_0.jpg", "img/2603_1.jpg", "img/2603_2.jpg"]}, "2635": {"c": "For You 2026", "s": ["42"], "col": ["Original"], "u": 1, "p": ["img/2635_0.jpg", "img/2635_1.jpg", "img/2635_2.jpg"]}, "2740": {"c": "Roman Holiday 2027", "s": ["44"], "col": ["Original", "Custom colour"], "u": 3, "p": ["img/2740_0.jpg", "img/2740_1.jpg", "img/2740_2.jpg"]}, "2724": {"c": "Roman Holiday 2027", "s": ["40"], "col": ["Original"], "u": 1, "p": ["img/2724_0.jpg", "img/2724_1.jpg", "img/2724_2.jpg"]}, "2736": {"c": "Roman Holiday 2027", "s": ["42"], "col": ["Original"], "u": 1, "p": ["img/2736_0.jpg", "img/2736_1.jpg", "img/2736_2.jpg"]}, "2623": {"c": "For You 2026", "s": ["46"], "col": ["Custom colour"], "u": 1, "p": ["img/2623_0.jpg", "img/2623_1.jpg", "img/2623_2.jpg"]}, "2703": {"c": "Roman Holiday 2027", "s": ["44"], "col": ["Original"], "u": 1, "p": ["img/2703_0.jpg", "img/2703_1.jpg", "img/2703_2.jpg"]}, "2628": {"c": "For You 2026", "s": ["40"], "col": ["Original"], "u": 1, "p": ["img/2628_0.jpg", "img/2628_1.jpg", "img/2628_2.jpg"]}, "2606": {"c": "For You 2026", "s": ["42"], "col": ["Custom colour"], "u": 1, "p": ["img/2606_0.jpg", "img/2606_1.jpg", "img/2606_2.jpg"]}, "2614": {"c": "For You 2026", "s": ["40"], "col": ["Custom colour"], "u": 1, "p": ["img/2614_0.jpg", "img/2614_1.jpg", "img/2614_2.jpg"]}};
+var T={
+en:{eyebrow:"Bridal Couture - stock",h1:"Stock collection",lead:"Ready gowns available now. Choose the models you like, add them to your request and we will send prices and availability within one business day.",all:"All",q:"Model no.",models:"models",add:"Add to request",added:"Added",sizes:"Sizes (EU)",sizeNote:"Optional: tap the sizes you need.",colour:"Colour",stock:"In stock",pcs:"pcs",req:"Request prices",yourReq:"Your request",items:"models in your request",view:"View request",lead2:"Check your list, tell us about your salon and send. Prices are not shown publicly - we reply with a personal price list.",remove:"Remove",salon:"Salon name *",name:"Your name *",country:"Country *",email:"Email *",phone:"Phone or WhatsApp",note:"Comment (optional)",consent:"I agree that KOTAPSKA may contact me about this request. *",send:"Send request",sending:"Sending...",ok:"Thank you",ok2:"We have received your request and will reply within one business day.",close:"Close",err:"Please fill in all required fields correctly.",fail:"Could not send. Please try again or write to office@kotapska.com.",empty:"Your request is empty. Add at least one model.",foot:"KOTAPSKA Bridal Couture, Komarova St. 11, Chernivtsi, Ukraine",size:"size",coll:{"Roman Holiday 2027":"Roman Holiday 2027","For You 2026":"For You 2026","Love Actually 2025":"Love Actually 2025","Earlier collections":"Earlier collections"}},
+fr:{eyebrow:"Bridal Couture - stock",h1:"Collection stock",lead:"Des robes prêtes, disponibles maintenant. Choisissez vos modèles, ajoutez-les à votre demande et nous vous enverrons prix et disponibilité sous un jour ouvré.",all:"Tout",q:"N° modèle",models:"modèles",add:"Ajouter à la demande",added:"Ajouté",sizes:"Tailles (EU)",sizeNote:"Facultatif : touchez les tailles souhaitées.",colour:"Couleur",stock:"En stock",pcs:"pcs",req:"Demander les prix",yourReq:"Votre demande",items:"modèles dans votre demande",view:"Voir la demande",lead2:"Vérifiez votre liste, présentez votre salon et envoyez. Les prix ne sont pas affichés publiquement : nous répondons avec une liste de prix personnelle.",remove:"Retirer",salon:"Nom du salon *",name:"Votre nom *",country:"Pays *",email:"E-mail *",phone:"Téléphone ou WhatsApp",note:"Commentaire (facultatif)",consent:"J'accepte que KOTAPSKA me contacte au sujet de cette demande. *",send:"Envoyer la demande",sending:"Envoi...",ok:"Merci",ok2:"Nous avons bien reçu votre demande et vous répondrons sous un jour ouvré.",close:"Fermer",err:"Veuillez remplir correctement tous les champs obligatoires.",fail:"Envoi impossible. Réessayez ou écrivez à office@kotapska.com.",empty:"Votre demande est vide. Ajoutez au moins un modèle.",foot:"KOTAPSKA Bridal Couture, rue Komarova 11, Tchernivtsi, Ukraine",size:"taille",coll:{"Roman Holiday 2027":"Roman Holiday 2027","For You 2026":"For You 2026","Love Actually 2025":"Love Actually 2025","Earlier collections":"Collections précédentes"}},
+de:{eyebrow:"Bridal Couture - Lagerware",h1:"Lagerkollektion",lead:"Fertige Kleider, sofort verfügbar. Wählen Sie Ihre Modelle, fügen Sie sie Ihrer Anfrage hinzu - Preise und Verfügbarkeit senden wir innerhalb eines Werktags.",all:"Alle",q:"Modell-Nr.",models:"Modelle",add:"Zur Anfrage hinzufügen",added:"Hinzugefügt",sizes:"Größen (EU)",sizeNote:"Optional: Tippen Sie auf die gewünschten Größen.",colour:"Farbe",stock:"Auf Lager",pcs:"Stk.",req:"Preise anfragen",yourReq:"Ihre Anfrage",items:"Modelle in Ihrer Anfrage",view:"Anfrage ansehen",lead2:"Prüfen Sie Ihre Liste, erzählen Sie uns von Ihrem Salon und senden Sie ab. Preise werden nicht öffentlich gezeigt - Sie erhalten eine persönliche Preisliste.",remove:"Entfernen",salon:"Name des Salons *",name:"Ihr Name *",country:"Land *",email:"E-Mail *",phone:"Telefon oder WhatsApp",note:"Kommentar (optional)",consent:"Ich bin einverstanden, dass KOTAPSKA mich zu dieser Anfrage kontaktiert. *",send:"Anfrage senden",sending:"Wird gesendet...",ok:"Vielen Dank",ok2:"Wir haben Ihre Anfrage erhalten und antworten innerhalb eines Werktags.",close:"Schließen",err:"Bitte füllen Sie alle Pflichtfelder korrekt aus.",fail:"Senden nicht möglich. Bitte erneut versuchen oder an office@kotapska.com schreiben.",empty:"Ihre Anfrage ist leer. Fügen Sie mindestens ein Modell hinzu.",foot:"KOTAPSKA Bridal Couture, Komarova-Str. 11, Tscherniwzi, Ukraine",size:"Größe",coll:{"Roman Holiday 2027":"Roman Holiday 2027","For You 2026":"For You 2026","Love Actually 2025":"Love Actually 2025","Earlier collections":"Frühere Kollektionen"}},
+uk:{eyebrow:"Bridal Couture - сток",h1:"Колекція зі стоку",lead:"Готові сукні, доступні зараз. Оберіть моделі, додайте їх до запиту, і ми надішлемо ціни та наявність протягом одного робочого дня.",all:"Усі",q:"№ моделі",models:"моделей",add:"Додати до запиту",added:"Додано",sizes:"Розміри (EU)",sizeNote:"Необов'язково: натисніть потрібні розміри.",colour:"Колір",stock:"У наявності",pcs:"шт.",req:"Запитати ціни",yourReq:"Ваш запит",items:"моделей у запиті",view:"Переглянути запит",lead2:"Перевірте список, розкажіть про салон і надішліть. Ціни публічно не показуємо - відповімо персональним прайсом.",remove:"Прибрати",salon:"Назва салону *",name:"Ваше ім'я *",country:"Країна *",email:"Email *",phone:"Телефон або WhatsApp",note:"Коментар (необов'язково)",consent:"Погоджуюсь, що KOTAPSKA зв'яжеться зі мною щодо цього запиту. *",send:"Надіслати запит",sending:"Надсилаємо...",ok:"Дякуємо",ok2:"Ми отримали ваш запит і відповімо протягом одного робочого дня.",close:"Закрити",err:"Будь ласка, правильно заповніть усі обов'язкові поля.",fail:"Не вдалося надіслати. Спробуйте ще раз або напишіть на office@kotapska.com.",empty:"Запит порожній. Додайте хоча б одну модель.",foot:"KOTAPSKA Bridal Couture, вул. Комарова, 11, Чернівці, Україна",size:"розмір",coll:{"Roman Holiday 2027":"Roman Holiday 2027","For You 2026":"For You 2026","Love Actually 2025":"Love Actually 2025","Earlier collections":"Попередні колекції"}}
+};
+var qs=new URLSearchParams(location.search);
+function pickLang(){var l=(qs.get("lang")||"").toLowerCase();if(l==="ua")l="uk";if(T[l])return l;try{var s=localStorage.getItem("kt_lang");if(T[s])return s}catch(e){}var n=(navigator.language||"en").slice(0,2).toLowerCase();if(n==="ua")n="uk";return T[n]?n:"en"}
+var L=pickLang(),tx=T[L],filter="all",term="";
+var cart={};
+try{cart=JSON.parse(localStorage.getItem("kt_cart")||"{}")||{}}catch(e){cart={}}
+function save(){try{localStorage.setItem("kt_cart",JSON.stringify(cart))}catch(e){}}
+function $(id){return document.getElementById(id)}
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.textContent=h;return e}
+var ORDER=["Roman Holiday 2027","For You 2026","Love Actually 2025","Earlier collections"];
+var IDS=Object.keys(DATA).sort(function(a,b){var ia=ORDER.indexOf(DATA[a].c),ib=ORDER.indexOf(DATA[b].c);return ia-ib||(+a)-(+b)});
+function szText(m){var s=DATA[m].s;return s.length?s.join(", "):"-"}
+function cartCount(){return Object.keys(cart).filter(function(k){return DATA[k]}).length}
+
+function applyLang(){
+  document.documentElement.lang=L;tx=T[L];
+  [["eyebrow"],["h1"],["lead"],["foot"],["sizes"],["colour"],["stock"]].forEach(function(k){$("t_"+k[0]).textContent=tx[k[0]]});
+  $("q").placeholder=tx.q;$("q").setAttribute("aria-label",tx.q);
+  $("rH").textContent=tx.yourReq;$("rLead").textContent=tx.lead2;
+  ["salon","name","country","email","phone","note"].forEach(function(k){$("l_"+k).textContent=tx[k]});
+  $("l_consent").textContent=tx.consent;$("rSend").textContent=tx.send;
+  $("dOk").textContent=tx.ok;$("dOk2").textContent=tx.ok2;$("dClose").textContent=tx.close;
+  $("mSzNote").textContent=tx.sizeNote;$("barBtn").textContent=tx.view;
+  document.title="KOTAPSKA - "+tx.h1;
+  Array.prototype.forEach.call($("langs").children,function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===L?"true":"false")});
+  buildChips();render();updateBar();if(openM)openModal(openM,true);if($("ovR").classList.contains("on"))renderReq();
+}
+function buildChips(){
+  var c=$("chips");c.textContent="";
+  var cols=["all"].concat(ORDER.filter(function(o){return IDS.some(function(m){return DATA[m].c===o})}));
+  cols.forEach(function(k){var b=el("button","chip",k==="all"?tx.all:tx.coll[k]);b.setAttribute("aria-pressed",filter===k?"true":"false");b.onclick=function(){filter=k;buildChips();render()};c.appendChild(b)});
+}
+function render(){
+  var g=$("grid");g.textContent="";var n=0;
+  IDS.forEach(function(m){
+    var d=DATA[m];if(filter!=="all"&&d.c!==filter)return;if(term&&m.indexOf(term)===-1)return;n++;
+    var c=el("article","card");
+    var ph=el("button","ph");ph.type="button";ph.setAttribute("aria-label",m);
+    var im=new Image();im.src="t/"+m+".jpg";im.alt=m+" - KOTAPSKA";im.loading="lazy";im.decoding="async";ph.appendChild(im);
+    ph.appendChild(el("span","tag",tx.coll[d.c]));ph.onclick=function(){openModal(m)};
+    var mt=el("div","meta");mt.appendChild(el("div","num",m));mt.appendChild(el("div","sub",tx.sizes.replace(/\s*\(.*\)/,"")+": "+szText(m)));
+    var a=el("button","add");a.type="button";setAdd(a,m);a.onclick=function(){toggle(m);setAdd(a,m)};
+    mt.appendChild(a);c.appendChild(ph);c.appendChild(mt);g.appendChild(c);
+  });
+  $("count").textContent=n+" "+tx.models;
+}
+function setAdd(b,m){var on=!!cart[m];b.setAttribute("aria-pressed",on?"true":"false");b.textContent=on?"✓ "+tx.added:"+ "+tx.add}
+function toggle(m,sizes){
+  if(cart[m]&&sizes===undefined){delete cart[m]}else{cart[m]={s:sizes||(cart[m]&&cart[m].s)||[]}}
+  save();updateBar();
+}
+function updateBar(){
+  var n=cartCount();var b=$("bar");b.classList.toggle("on",n>0);
+  $("barTxt").innerHTML="";var s=document.createElement("span");s.innerHTML="<b>"+n+"</b> "+tx.items;$("barTxt").appendChild(s);
+}
+var openM=null,msel=[];
+function openModal(m,keep){
+  openM=m;var d=DATA[m];
+  var g=$("mGal");g.textContent="";d.p.forEach(function(p,i){var im=new Image();im.src=p;im.alt=m+" - "+(i+1);im.decoding="async";if(i>0)im.loading="lazy";g.appendChild(im)});
+  $("mNum").textContent=m;$("mColl").textContent=tx.coll[d.c];
+  if(!keep)msel=(cart[m]&&cart[m].s||[]).slice();
+  var s=$("mSz");s.textContent="";
+  d.s.forEach(function(z){var b=el("button",null,z);b.type="button";b.setAttribute("aria-pressed",msel.indexOf(z)>-1?"true":"false");b.onclick=function(){var i=msel.indexOf(z);if(i>-1)msel.splice(i,1);else msel.push(z);b.setAttribute("aria-pressed",i>-1?"false":"true");if(cart[m])toggle(m,msel.slice());};s.appendChild(b)});
+  $("mCol").textContent=d.col.join(", ");$("mStock").textContent=d.u+" "+tx.pcs;
+  var a=$("mAdd");function lab(){var on=!!cart[m];a.textContent=on?"✓ "+tx.added+" - "+tx.remove:"+ "+tx.add}
+  lab();a.onclick=function(){if(cart[m])toggle(m);else toggle(m,msel.slice());lab();render()};
+  $("ovM").classList.add("on");document.body.style.overflow="hidden";
+  if(!keep){try{history.replaceState(null,"","?model="+m+"&lang="+L)}catch(e){}}
+}
+function closeAll(){
+  ["ovM","ovR"].forEach(function(i){$(i).classList.remove("on")});openM=null;document.body.style.overflow="";
+  try{history.replaceState(null,"","?lang="+L)}catch(e){}
+  render();
+}
+function renderReq(){
+  var u=$("rList");u.textContent="";var ks=Object.keys(cart).filter(function(k){return DATA[k]});
+  ks.forEach(function(m){
+    var li=el("li","li");var im=new Image();im.src="t/"+m+".jpg";im.alt="";li.appendChild(im);
+    var t=el("div","t");t.appendChild(el("b",null,m));t.appendChild(el("small",null,tx.coll[DATA[m].c]+(cart[m].s&&cart[m].s.length?" - "+tx.size+": "+cart[m].s.join(", "):"")));li.appendChild(t);
+    var r=el("button","rm",tx.remove);r.type="button";r.onclick=function(){delete cart[m];save();updateBar();renderReq();render();if(!cartCount())closeAll()};li.appendChild(r);u.appendChild(li);
+  });
+}
+function openReq(){renderReq();$("rBody").style.display="";$("rDone").style.display="none";$("rMsg").textContent="";$("rMsg").className="msg";$("rSend").disabled=false;$("rSend").textContent=tx.send;$("ovM").classList.remove("on");$("ovR").classList.add("on");document.body.style.overflow="hidden"}
+$("barBtn").onclick=openReq;
+Array.prototype.forEach.call(document.querySelectorAll("[data-close]"),function(b){b.onclick=closeAll});
+["ovM","ovR"].forEach(function(i){$(i).addEventListener("click",function(e){if(e.target===this)closeAll()})});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll()});
+$("langs").onclick=function(e){var l=e.target.getAttribute&&e.target.getAttribute("data-l");if(!l)return;L=l;try{localStorage.setItem("kt_lang",L)}catch(x){}applyLang()};
+$("q").oninput=function(){term=this.value.replace(/\D/g,"");render()};
+
+$("rForm").onsubmit=function(e){
+  e.preventDefault();var f=this,msg=$("rMsg"),btn=$("rSend");msg.className="msg";msg.textContent="";
+  var ks=Object.keys(cart).filter(function(k){return DATA[k]});
+  if(!ks.length){msg.className="msg err";msg.textContent=tx.empty;return}
+  var v=function(n){return(f.elements[n].value||"").trim()};
+  var email=v("email");
+  if(!v("salon")||!v("name")||!v("country")||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)||!$("f_consent").checked){msg.className="msg err";msg.textContent=tx.err;return}
+  if(f.elements.website.value)return;
+  var lines=ks.map(function(m){var s=cart[m].s||[];return m+" ("+DATA[m].c+")"+(s.length?" - size: "+s.join(", "):"")});
+  var models=lines.join("; ");if(v("note"))models+="\nComment: "+v("note");
+  var p={salon:v("salon"),name:v("name"),country:v("country"),email:email,phone:v("phone"),need:["price list"],models:models,catalog_models:ks,consent:true,lang:L,source:"online-catalogue",page:location.href.split("?")[0],ts:new Date().toISOString(),website:""};
+  ["utm_source","utm_medium","utm_campaign","utm_content"].forEach(function(k){if(qs.get(k))p[k]=qs.get(k)});
+  btn.disabled=true;btn.textContent=tx.sending;
+  fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p)}).then(function(r){if(!r.ok)throw 0;
+    cart={};save();updateBar();f.reset();$("rBody").style.display="none";$("rDone").style.display="block";render()
+  }).catch(function(){msg.className="msg err";msg.textContent=tx.fail;btn.disabled=false;btn.textContent=tx.send});
+};
+applyLang();
+var pm=qs.get("model");if(pm&&DATA[pm])openModal(pm);
+</script>
+</body>
+</html>
